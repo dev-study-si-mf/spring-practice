@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>顧客一覧</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!--CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <!--JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div>
+        <form th:action="@{/customer/create}" th:object="${customerForm}" method="post">
+            <dl>
+                <dt><label for="name">名前</label></dt>
+                <dd>
+                    <input type="text" id="name" name="name" th:field="*{name}" th:errorClass="error-input" value="山田　太郎">
+                    <span th:if="${#fields.hasErrors('name')}" th:error="*{name}" class="error-message">error!</span>
+                </dd>
+                <dt><label for="email">e-mail</label></dt>
+                <dd>
+                    <input type="text" id="email" name="email" th:field="*{email}" th:errorClass="error-input" value="taro_yamada@example.com">
+                    <span th:if="${#fields.hasErrors('email')}" th:error="*{email}" class="error-message">error!</span>
+                </dd>
+            </dl>
+            <input type="submit" value="create">
+        </form>
+    </div>
+    <hr/>
+    <table>
+        <tr th:each="customer : ${customer}">
+            <td th:text="${customer.id}">100</td>
+            <td th:text="${customer.name}">大島　慎太郎</td>
+            <td th:text="${customer.email}">shintaro_oshima@mforce.co.jp</td>
+            <td>
+                <form th:action="@{/customer/edit}" method="get">
+                    <input type="submit" name="form" value="edit"/>
+                    <input type="hidden" name="id" th:value="${customer.id}"/>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/customer/delete}" method="post">
+                    <input type="submit" name="form" value="delete"/>
+                    <input type="hidden" name="id" th:value="${customer.id}"/>
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
