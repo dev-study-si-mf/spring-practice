@@ -15,13 +15,13 @@
             <dl>
                 <dt><label for="name">名前</label></dt>
                 <dd>
-                    <input type="text" id="name" name="name" th:field="*{name}" th:errorClass="error-input" value="山田　太郎">
-                    <span th:if="${#fields.hasErrors('name')}" th:error="*{name}" class="error-message">error!</span>
+                    <input type="text" id="name" name="name" th:field="*{name}" th:errorclass="error-input" value="山田　太郎">
+                    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error-message">error!</span>
                 </dd>
                 <dt><label for="email">e-mail</label></dt>
                 <dd>
-                    <input type="text" id="email" name="email" th:field="*{email}" th:errorClass="error-input" value="taro_yamada@example.com">
-                    <span th:if="${#fields.hasErrors('email')}" th:error="*{email}" class="error-message">error!</span>
+                    <input type="text" id="email" name="email" th:field="*{email}" th:errorclass="error-input" value="taro_yamada@example.com">
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error-message">error!</span>
                 </dd>
             </dl>
             <input type="submit" value="create">

@@ -27,4 +27,12 @@ public class CustomerService {
     public void create(Customer customer) {
         customerDao.insert(customer);
     }
+
+    public void update(Customer customer) {
+        customerDao.update(customer);
+    }
+
+    public void delete(Customer customer) {
+        customerDao.delete(customer);
+    }
 }

@@ -56,9 +56,40 @@ public class CustomerController {
     }
 
     @GetMapping(path = "edit", params = "form")
-    String editForm(@RequestParam String id, CustomerForm form) {
+    String editForm(@RequestParam String id, CustomerForm customerForm) {
         Customer customer = customerService.selectById(id);
-        BeanUtils.copyProperties(customer, form);
+        customerForm.setName(customer.name);
+        customerForm.setEmail(customer.email);
         return "customer/edit";
     }
+
+    @PostMapping(path = "edit")
+    String edit(@RequestParam String id, @Validated CustomerForm customerForm, BindingResult result) {
+        if (result.hasErrors()) {
+            return editForm(id, customerForm);
+        }
+
+        Customer customer = new Customer();
+        customer.id = id;
+        customer.name = customerForm.getName();
+        customer.email = customerForm.getEmail();
+        customerService.update(customer);
+
+        return "redirect:/customer";
+    }
+
+    @PostMapping(path = "edit", params = "goToTop")
+    String goToTop() {
+        return "redirect:/customer";
+    }
+
+    @PostMapping(path = "delete")
+    String delete(@RequestParam String id) {
+        Customer customer = customerService.selectById(id);
+        if (customer != null) {
+            customerService.delete(customer);
+        }
+        return "redirect:/customer";
+    }
+
 }

@@ -10,11 +10,11 @@ import javax.validation.constraints.Size;
 public class CustomerForm {
 
     @NotNull
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 256)
     private String name;
 
     @NotNull
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 256)
     private String email;
 
     public String getName() {

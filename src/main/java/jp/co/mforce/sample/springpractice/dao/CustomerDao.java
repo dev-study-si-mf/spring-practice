@@ -1,9 +1,7 @@
 package jp.co.mforce.sample.springpractice.dao;
 
 import jp.co.mforce.sample.springpractice.entity.Customer;
-import org.seasar.doma.Dao;
-import org.seasar.doma.Insert;
-import org.seasar.doma.Select;
+import org.seasar.doma.*;
 import org.seasar.doma.boot.ConfigAutowireable;
 
 import java.util.List;
@@ -20,4 +18,10 @@ public interface CustomerDao {
 
     @Insert
     int insert(Customer customer);
+
+    @Update
+    int update(Customer customer);
+
+    @Delete
+    int delete(Customer customer);
 }
