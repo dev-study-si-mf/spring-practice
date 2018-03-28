@@ -1,20 +1,15 @@
 package jp.co.mforce.sample.springpractice.controller;
 
-import jp.co.mforce.sample.springpractice.entity.Customer;
 import jp.co.mforce.sample.springpractice.form.CustomerForm;
 import jp.co.mforce.sample.springpractice.service.CustomerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.UUID;
 
 @Controller
 @RequestMapping("customer")
@@ -32,8 +27,8 @@ public class CustomerController {
 
     @GetMapping
     String list(Model model) {
-        List<Customer> customers = customerService.selectAll();
-        model.addAttribute("customer", customers);
+
+        // TODO ユーザの取得処理を書きましょう
 
         return "customer/list";
     }
@@ -44,22 +39,17 @@ public class CustomerController {
             return list(model);
         }
 
-        Customer customer = new Customer();
-//        BeanUtils.copyProperties(form, customer);
-        customer.id = UUID.randomUUID().toString().replace("-","");
-        customer.name = form.getName();
-        customer.email = form.getEmail();
-        LOGGER.info("form : {}", form);
-        LOGGER.info("customer : {}", customer);
-        customerService.create(customer);
+        // TODO ユーザの登録処理を書きましょう
+
         return "redirect:/customer";
     }
 
     @GetMapping(path = "edit", params = "form")
     String editForm(@RequestParam String id, CustomerForm customerForm) {
-        Customer customer = customerService.selectById(id);
-        customerForm.setName(customer.name);
-        customerForm.setEmail(customer.email);
+
+        // TODO 選択されたユーザの情報を取得して、画面に連携する form に設定しましょう
+
+
         return "customer/edit";
     }
 
@@ -69,11 +59,7 @@ public class CustomerController {
             return editForm(id, customerForm);
         }
 
-        Customer customer = new Customer();
-        customer.id = id;
-        customer.name = customerForm.getName();
-        customer.email = customerForm.getEmail();
-        customerService.update(customer);
+        // TODO ユーザの更新処理を書きましょう
 
         return "redirect:/customer";
     }
@@ -85,10 +71,9 @@ public class CustomerController {
 
     @PostMapping(path = "delete")
     String delete(@RequestParam String id) {
-        Customer customer = customerService.selectById(id);
-        if (customer != null) {
-            customerService.delete(customer);
-        }
+
+        // TODO ユーザの削除処理を書きましょう
+
         return "redirect:/customer";
     }
 

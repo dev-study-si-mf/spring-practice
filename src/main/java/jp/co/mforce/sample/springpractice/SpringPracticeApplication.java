@@ -12,6 +12,11 @@ public class SpringPracticeApplication {
 		SpringApplication.run(SpringPracticeApplication.class, args);
 	}
 
+	/**
+	 * Thymeleaf Layout Dialect を有効にするための Bean 定義
+	 *
+	 * @return レイアウト定義
+	 */
 	@Bean
 	public LayoutDialect layoutDialect() {
 		return new LayoutDialect();
