@@ -52,7 +52,8 @@ Spring Framework には様々なプロダクト（機能）がありますが、
 "Spring Boot" はWebアプリケーションに特化しているわけではありません。
 コマンドラインアプリケーションやバッチアプリケーションにも使えます。
 
-
+もう少し詳しい説明はこっち
+https://www.ibm.com/developerworks/jp/java/library/j-spring-boot-basics-perry/
 
 ## 環境設定
 
