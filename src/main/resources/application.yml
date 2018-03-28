@@ -8,7 +8,7 @@ spring:
   thymeleaf:
     enabled: true
     cache: false
-
+#    mode: HTML
 # DB settings
   datasource:
     # For in memory
