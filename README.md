@@ -71,6 +71,13 @@ https://www.ibm.com/developerworks/jp/java/library/j-spring-boot-basics-perry/
 STS(Spring Tool Suite™)を使用します。  
 https://spring.io/tools/sts/all からダウンロードして任意の場所に展開しましょう。
 
+IntelliJ IDEA CE でもいいかも。  
+https://www.jetbrains.com/idea  
+Community の zip 版をダウンロードしましょう。
+
+JDKも必要なのでダウンロード & インストール  
+http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
 #### ソース管理
 
 Git(GitHub)を使用します。  
