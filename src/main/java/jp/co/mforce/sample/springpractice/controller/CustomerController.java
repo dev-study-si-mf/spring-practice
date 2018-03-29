@@ -1,5 +1,6 @@
 package jp.co.mforce.sample.springpractice.controller;
 
+import jp.co.mforce.sample.springpractice.entity.Customer;
 import jp.co.mforce.sample.springpractice.form.CustomerForm;
 import jp.co.mforce.sample.springpractice.service.CustomerService;
 import org.slf4j.Logger;
@@ -10,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("customer")
@@ -29,7 +32,8 @@ public class CustomerController {
     String list(Model model) {
 
         // TODO ユーザの取得処理を書きましょう
-
+        List<Customer> listAll = customerService.selectAll();
+        model.addAttribute("custamer",listAll);
         return "customer/list";
     }
 
