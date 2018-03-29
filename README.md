@@ -66,17 +66,17 @@ https://www.ibm.com/developerworks/jp/java/library/j-spring-boot-basics-perry/
 
 ## 環境設定
 
-#### IDE
-
-STS(Spring Tool Suite™)を使用します。  
-https://spring.io/tools/sts/all からダウンロードして任意の場所に展開しましょう。
-
-IntelliJ IDEA CE でもいいかも。  
-https://www.jetbrains.com/idea  
-Community の zip 版をダウンロードしましょう。
-
+#### JDK
 JDKも必要なのでダウンロード & インストール  
 http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+
+windows 64bit 版の exe をダウンロードしてインストールします。
+
+#### IDE
+
+研修では、IntelliJ IDEA Community Edition を使います。  
+https://www.jetbrains.com/idea  
+Community の exe 版をダウンロードしましょう。(zip 版はデフォルトの機能が少ないです)
 
 #### ソース管理
 
@@ -84,9 +84,16 @@ Git(GitHub)を使用します。
 PortableGit をダウンロードして任意の場所に展開しましょう。  
 https://github.com/git-for-windows/git/releases/latest  
   
-展開したら、以下をPATHを設定しましょう。
+展開したら、以下を `PATH` を設定しましょう。
 ```
 {展開したフォルダ}/cmd
+```
+
+環境変数 `PATH` が設定出来たらコマンドプロンプトを起動して以下のコマンドをたたいて適用されたか確認してください。
+
+```
+> git --version
+git version 2.16.3.windows.1 <- こんな風に出たらOKです。
 ```
 
 #### Git の設定
@@ -124,8 +131,12 @@ GitHubから雛形をダウンロードします。
 1. 作るものを整理しよう
 1. DBアクセスする機能を作ろう
 	1. 情報を取得するSQLを書こう
+		1. 全件取得
+		1. 1件取得
 	1. SQLを検証しよう
+		1. H2DBのコンソールを使う
 	1. Entity クラスを作ろう
+		1. テーブル、カラムに応じた Entity を作る
 	1. Dao クラスを作ろう
 1. ビジネスロジックを書こう
 	1. Serviceクラスを書こう
