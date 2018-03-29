@@ -13,6 +13,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("customer")
@@ -44,6 +45,12 @@ public class CustomerController {
         }
 
         // TODO ユーザの登録処理を書きましょう
+        Customer customer = new Customer();
+        String id = UUID.randomUUID().toString().replace("-", "");
+        customer.name = form.getName();
+        customer.email = form.getEmail();
+        customer.id = id;
+        customerService.insertCustomer(customer);
 
         return "redirect:/customer";
     }
@@ -64,6 +71,7 @@ public class CustomerController {
         }
 
         // TODO ユーザの更新処理を書きましょう
+        customerService.updateCustomer(id);
 
         return "redirect:/customer";
     }
@@ -77,6 +85,7 @@ public class CustomerController {
     String delete(@RequestParam String id) {
 
         // TODO ユーザの削除処理を書きましょう
+        customerService.deleteCustomer(id);
 
         return "redirect:/customer";
     }
