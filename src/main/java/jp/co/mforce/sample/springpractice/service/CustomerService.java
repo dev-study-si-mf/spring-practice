@@ -4,6 +4,7 @@ import jp.co.mforce.sample.springpractice.dao.CustomerDao;
 import jp.co.mforce.sample.springpractice.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -28,5 +29,30 @@ public class CustomerService {
 
         return customer;
 
+    }
+
+    @Transactional
+    public int insertCustomer(Customer customer){
+        return customerDao.insertCustomer(customer);
+    }
+
+    @Transactional
+    public int updateCustomer(String id){
+        Customer customer = customerDao.selectById(id);
+        int countUpdate = 0;
+        if(customer != null){
+            countUpdate = customerDao.updateCustomer(customer);
+        }
+        return countUpdate;
+    }
+
+    @Transactional
+    public int deleteCustomer(String id){
+        Customer customer = customerDao.selectById(id);
+        int countDelete = 0;
+        if(customer != null){
+            countDelete = customerDao.deleteCustomer(customer);
+        }
+        return countDelete;
     }
 }
