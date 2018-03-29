@@ -68,15 +68,15 @@ https://www.ibm.com/developerworks/jp/java/library/j-spring-boot-basics-perry/
 
 #### JDK
 JDKも必要なのでダウンロード & インストール  
-http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html  
 
-windows 64bit 版の exe をダウンロードしてインストールします。
+windows 64bit 版の exe をダウンロードしてインストールします。  
 
 #### IDE
 
-研修では、IntelliJ IDEA Community Edition を使います。  
-https://www.jetbrains.com/idea  
-Community の exe 版をダウンロードしましょう。(zip 版はデフォルトの機能が少ないです)
+研修では、IntelliJ IDEA Community Edition を使います。  
+Intellij IDEA https://www.jetbrains.com/idea  
+Community の exe 版をダウンロードしましょう。(zip 版はデフォルトの機能が少ないです)  
 
 #### ソース管理
 
