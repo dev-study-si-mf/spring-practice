@@ -78,10 +78,12 @@ windows 64bit 版の exe をダウンロードしてインストールします�
 Intellij IDEA https://www.jetbrains.com/idea  
 Community の exe 版をダウンロードしましょう。(zip 版はデフォルトの機能が少ないです)  
 
+インストール時にプラグインをどうするか聞かれますが、基本はデフォルトでOKです。
+
 #### ソース管理
 
 Git(GitHub)を使用します。  
-PortableGit をダウンロードして任意の場所に展開しましょう。  
+PortableGit をダウンロードして任意の場所に展開しましょう。  
 https://github.com/git-for-windows/git/releases/latest  
   
 展開したら、以下を `PATH` を設定しましょう。
@@ -98,7 +100,7 @@ git version 2.16.3.windows.1 <- こんな風に出たらOKです。
 
 #### Git の設定
 
-Gitの設定をします。
+Gitの設定をします。（任意）
 ```
 > git config xxx
 ```
@@ -110,9 +112,18 @@ GitHubから雛形をダウンロードします。
 > git clone https://github.com/dev-study-si-mf/spring-practice.git
 ```
 
+clone が終わると、コマンドを実行したカレントディレクトリにソースがダウンロードされています。
+コマンドプロンプトを開いて、ダウンロードしたフォルダに移動しましょう。
+
+```
+{ダウンロードしたディレクトリ}\spring-practice
+```
+
 #### Git のブランチ設定
 
-ブランチを切ります。任意の名前でOKですが、かぶらないようにしないといけません。
+ブランチを切ります。任意の名前でOKですが、かぶらないようにしないといけません。  
+`{branch-name}` は任意の名前です。
+
 ```
 > git branch {branch-name}
 ```
@@ -126,6 +137,7 @@ GitHubから雛形をダウンロードします。
   master
 * {branch-name} <- * が付いてるところが作業中のブランチ
 ```
+今後の作業はこのブランチを使って行います。
 
 ## 実装
 1. 作るものを整理しよう
