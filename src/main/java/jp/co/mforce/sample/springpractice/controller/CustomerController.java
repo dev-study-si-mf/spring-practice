@@ -34,7 +34,7 @@ public class CustomerController {
 
         // TODO ユーザの取得処理を書きましょう
         List<Customer> listAll = customerService.selectAll();
-        model.addAttribute("custamer",listAll);
+        model.addAttribute("customer",listAll);
         return "customer/list";
     }
 
@@ -52,6 +52,7 @@ public class CustomerController {
         customer.id = id;
         customerService.insertCustomer(customer);
 
+
         return "redirect:/customer";
     }
 
@@ -59,7 +60,9 @@ public class CustomerController {
     String editForm(@RequestParam String id, CustomerForm customerForm) {
 
         // TODO 選択されたユーザの情報を取得して、画面に連携する form に設定しましょう
-
+        Customer customer = customerService.selectById(id);
+        customerForm.setName(customer.name);
+        customerForm.setEmail(customer.email);
 
         return "customer/edit";
     }
@@ -70,8 +73,8 @@ public class CustomerController {
             return editForm(id, customerForm);
         }
 
-        // TODO ユーザの更新処理を書きましょう
-        customerService.updateCustomer(id);
+
+        customerService.updateCustomer(id, customerForm);
 
         return "redirect:/customer";
     }

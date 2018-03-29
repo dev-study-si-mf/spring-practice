@@ -2,6 +2,7 @@ package jp.co.mforce.sample.springpractice.service;
 
 import jp.co.mforce.sample.springpractice.dao.CustomerDao;
 import jp.co.mforce.sample.springpractice.entity.Customer;
+import jp.co.mforce.sample.springpractice.form.CustomerForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,8 +38,11 @@ public class CustomerService {
     }
 
     @Transactional
-    public int updateCustomer(String id){
+    public int updateCustomer(String id, CustomerForm form){
         Customer customer = customerDao.selectById(id);
+        customer.name = form.getName();
+        customer.email = form.getEmail();
+
         int countUpdate = 0;
         if(customer != null){
             countUpdate = customerDao.updateCustomer(customer);
