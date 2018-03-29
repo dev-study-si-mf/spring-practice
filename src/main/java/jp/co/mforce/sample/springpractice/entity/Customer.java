@@ -6,4 +6,7 @@ import org.seasar.doma.*;
 public class Customer {
 
     // TODO テーブル定義にあったフィールドを設定しましょう
+    public String id;
+    public String email;
+    public String name;
 }
