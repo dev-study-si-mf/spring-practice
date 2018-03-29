@@ -19,6 +19,7 @@ public class SpringPracticeApplication {
 	 */
 	@Bean
 	public LayoutDialect layoutDialect() {
+
 		return new LayoutDialect();
 	}
 }

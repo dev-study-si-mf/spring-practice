@@ -1,5 +1,6 @@
 package jp.co.mforce.sample.springpractice.controller;
 
+import jp.co.mforce.sample.springpractice.entity.Customer;
 import jp.co.mforce.sample.springpractice.form.CustomerForm;
 import jp.co.mforce.sample.springpractice.service.CustomerService;
 import org.slf4j.Logger;
@@ -10,6 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("customer")
@@ -22,6 +26,7 @@ public class CustomerController {
 
     @ModelAttribute
     CustomerForm setupForm() {
+
         return new CustomerForm();
     }
 
@@ -29,6 +34,9 @@ public class CustomerController {
     String list(Model model) {
 
         // TODO ユーザの取得処理を書きましょう
+        List<Customer> listAll = customerService.selectAll();
+
+        model.addAttribute("customer",listAll);
 
         return "customer/list";
     }
@@ -40,6 +48,13 @@ public class CustomerController {
         }
 
         // TODO ユーザの登録処理を書きましょう
+        Customer customer =new Customer();
+        String id = UUID.randomUUID().toString().replace("-", "");
+
+        customer.name = form.getName();
+        customer.email = form.getEmail();
+        customer.id = id;
+        customerService.insertCustomer(customer);
 
         return "redirect:/customer";
     }
@@ -48,7 +63,9 @@ public class CustomerController {
     String editForm(@RequestParam String id, CustomerForm customerForm) {
 
         // TODO 選択されたユーザの情報を取得して、画面に連携する form に設定しましょう
-
+        Customer customer = customerService.selectById(id);
+        customerForm.setName(customer.name);
+        customerForm.setEmail(customer.email);
 
         return "customer/edit";
     }
@@ -60,6 +77,7 @@ public class CustomerController {
         }
 
         // TODO ユーザの更新処理を書きましょう
+        customerService.updateCustomer(id, customerForm);
 
         return "redirect:/customer";
     }
@@ -73,6 +91,7 @@ public class CustomerController {
     String delete(@RequestParam String id) {
 
         // TODO ユーザの削除処理を書きましょう
+        customerService.deleteCustomer(id);
 
         return "redirect:/customer";
     }
